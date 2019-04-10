@@ -8,26 +8,41 @@ import openpyxl
 # ws = wb.active
 
 # getting the first required excel file from the folder to compare folders
-getFirstFile = openpyxl.load_workbook('C:\Ramisa\MIS\Test1.xlsx')
+getFirstFile = openpyxl.load_workbook('C:\Grameenphone\ExcelDataAnalysis\Test1.xlsx')
 
-#the current sheet is active
+getSecondFile = openpyxl.load_workbook('C:\Grameenphone\ExcelDataAnalysis\Test2.xlsx')
+
+#the current sheets are active
 sheetForFile1 = getFirstFile.active
+sheetForFile2 = getSecondFile.active
 
-#getting cell data from the file
+#compare the first row according to the employee id
+# for columns in sheetForFile1
+#     getEmployeeID = sheetForFile1.cell(row=1, column=columns)
 
-for columnIndex in sheetForFile1:
-    # getdata = 'A'+str(columnIndex)
-    # print('getdata: '+getdata)
-    
-    getdata[columnIndex] = sheetForFile1['A1']
-    # a = sheetForFile1['A2']
-    # a3 = sheetForFile1.cell(row=3, column=1)
+#     print(getEmployeeID.value)
 
-    print(getdata[columnIndex])
+for row in sheetForFile1.iter_rows():
+    for cell in row:
+        if cell.value =='EMPLOYEE NO':
+            employeeNo_columnNo = cell.column
+            employeeNo_rowNo = cell.row
+            print (employeeNo_columnNo)
+            print (employeeNo_rowNo)
+# row+=1
+
+
+
+
+#getting cell data from the file    
+# getdata = sheetForFile1.cell(row=1, column=1)
+
+# a = sheetForFile1['A2']
+# a3 = sheetForFile1.cell(row=3, column=1)
+
+# print(getdata.value)
 # print(a2.value) 
 # print(a3.value)
-
-
 
 # Data can be assigned directly to cells
 # ws['A1'] = 42
